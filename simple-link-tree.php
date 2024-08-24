@@ -20,6 +20,12 @@ add_action('admin_init', 'simple_linktree_settings_init');
 // Añadir el shortcode
 add_shortcode('simple_linktree', 'simple_linktree_shortcode');
 
+function my_theme_enqueue_styles() {
+    $plugin_url = plugin_dir_url( __FILE__ );
+    wp_enqueue_style( 'my-theme-style', $plugin_url . 'style.css' );
+}
+add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+
 // Menu de administración
 function simple_linktree_add_admin_menu() {
     add_menu_page(
@@ -68,6 +74,7 @@ function simple_linktree_settings_init() {
 
 // Llamar a la sección
 function simple_linktree_section_callback() {
+    echo '<h2>Para utilizar esta plugin debes incluir el shortcode [simple_linktree] en tu página o post.</h2>';
     echo 'Ingresa tu información abajo:';
 }
 
@@ -113,7 +120,7 @@ function simple_linktree_shortcode() {
     foreach ($fields as $field => $label) {
         if (!empty($options[$field])) {
             if (in_array($field, array('facebook', 'twitter', 'linkedin', 'github', 'website'))) {
-                $output .= "<a href='{$options[$field]}' target='_blank'>$label</a><br>";
+                $output .= "<a class='boton-link' href='{$options[$field]}' target='_blank'>$label</a><br>";
             } else {
                 $output .= "<p><strong>$label:</strong> {$options[$field]}</p>";
             }
