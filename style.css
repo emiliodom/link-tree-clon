@@ -1,1 +1,24 @@
-
+.boton-link {
+    width: 50%;
+    border-radius: 50px;
+    background-color: #4CAF50;
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+    .boton-link:hover {
+        margin: 0 0 10px;
+        padding: 10px 20px;
+        background-color: #fff;
+        color: #4CAF50;
+        transition: background-color 0.3s ease-out;
+        border:1px seagreen solid;
+    }
